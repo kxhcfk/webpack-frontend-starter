@@ -1,17 +1,27 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from "path";
+import webpack from "webpack";
 
-import {WebpackBuildEnv} from "./config/webpack/types/config";
+import {WebpackBuildEnv, WebpackBuildPaths} from "./config/webpack/types/config";
+import {buildWebpackConfig} from "./config/webpack/buildWebpackConfig";
 
 const config = (env: WebpackBuildEnv): webpack.Configuration => {
-    console.log(env);
-    return {
-        mode: 'production',
-        entry: './foo.js',
-        output: {
-            path: path.resolve(__dirname, 'dist'),
-        },
-    }
+    const mode = env.mode;
+    const port = env.port || 3000;
+    const isDev = mode === "development";
+    
+    const paths: WebpackBuildPaths = {
+        src: path.resolve(__dirname, "src"),
+        output: path.resolve(__dirname, "build"),
+        
+        pages: path.resolve(__dirname, "src", "pages"),
+    };
+    
+    return buildWebpackConfig({
+        isDev,
+        mode,
+        port,
+        paths,
+    });
 };
 
 export default config;
