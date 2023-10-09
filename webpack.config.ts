@@ -1,15 +1,17 @@
 import path from 'path';
 import webpack from 'webpack';
-// in case you run into any typescript error when configuring `devServer`
-import 'webpack-dev-server';
 
-const config: webpack.Configuration = {
-    mode: 'production',
-    entry: './foo.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'foo.bundle.js',
-    },
+import {WebpackBuildEnv} from "./config/webpack/types/config";
+
+const config = (env: WebpackBuildEnv): webpack.Configuration => {
+    console.log(env);
+    return {
+        mode: 'production',
+        entry: './foo.js',
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+        },
+    }
 };
 
 export default config;
