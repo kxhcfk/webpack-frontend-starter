@@ -7,7 +7,8 @@
   },
   "private": true,
   "scripts": {
-    "dev": "webpack --env mode=production"
+    "dev": "webpack serve --env mode=development",
+    "build": "webpack --env mode=production"
   },
   "keywords": [],
   "author": "kxhcfk",
@@ -15,9 +16,11 @@
   "devDependencies": {
     "@types/node": "^20.8.4",
     "@types/webpack": "^5.28.3",
+    "html-webpack-plugin": "^5.5.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
