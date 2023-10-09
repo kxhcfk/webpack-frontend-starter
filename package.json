@@ -5,6 +5,7 @@
   "repository": {
     "url": "https://github.com/kxhcfk/webpack-frontend-starter"
   },
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,11 @@
   "author": "kxhcfk",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^5.88.2"
+    "@types/node": "^20.8.4",
+    "@types/webpack": "^5.28.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
