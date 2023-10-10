@@ -1,6 +1,7 @@
 export type WebpackBuildMode = "development" | "production";
 
 export interface WebpackBuildPaths {
+    readonly app: string;
     readonly src: string;
     readonly output: string;
     readonly pages: string;

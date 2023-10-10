@@ -6,10 +6,13 @@ import path from "path";
 const buildEntry = (options: WebpackBuildOptions): webpack.Configuration["entry"] => {
     const {paths} = options;
     
-    const entry = fs.readdirSync(paths.pages).reduce((acc, file) => {
+    const entry = fs.readdirSync(paths.app).reduce((acc, file) => {
         const [filename, ext] = file.split(".");
         
-        acc.push([filename, path.resolve(paths.pages, file)]);
+        acc.push([
+            filename,
+            path.resolve(paths.app, file)
+        ]);
         
         return acc;
     }, []);

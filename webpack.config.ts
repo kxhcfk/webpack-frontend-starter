@@ -12,8 +12,8 @@ const config = (env: WebpackBuildEnv): webpack.Configuration => {
     const paths: WebpackBuildPaths = {
         src: path.resolve(__dirname, "src"),
         output: path.resolve(__dirname, "build"),
-        
-        pages: path.resolve(__dirname, "src", "pages"),
+        app: path.resolve(__dirname, "src", "app"),
+        pages: path.resolve(__dirname, "src", "view", "pages"),
     };
     
     return buildWebpackConfig({
