@@ -2,6 +2,7 @@ import {WebpackBuildOptions} from "./types/config";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import SvgChunkWebpackPlugin from 'svg-chunk-webpack-plugin';
 import path from "path";
 import fs from "fs";
 
@@ -25,7 +26,8 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
         ...html,
         new MiniCssExtractPlugin({
             filename: '[name].css',
-        })
+        }),
+        new SvgChunkWebpackPlugin(),
     ];
     
     return plugins;
