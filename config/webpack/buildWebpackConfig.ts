@@ -4,6 +4,7 @@ import {buildEntry} from "./buildEntry";
 import {buildPlugins} from "./buildPlugins";
 import {buildLoaders} from "./buildLoaders";
 import {buildDevServer} from "./buildDevServer";
+import {buildResolve} from "./buildResolve";
 
 const buildWebpackConfig = (options: WebpackBuildOptions): webpack.Configuration => {
     const {mode, isDev, paths} = options;
@@ -17,6 +18,7 @@ const buildWebpackConfig = (options: WebpackBuildOptions): webpack.Configuration
         },
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
+        resolve: buildResolve(options),
         output: {
             path: paths.output,
             filename: '[name].js',

@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
+    "sourceMap": true,
     "moduleResolution":"node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true

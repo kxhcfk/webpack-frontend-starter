@@ -1,4 +1,6 @@
 import '../styles/about.scss';
 
-console.log('about')
+const n: number = 3;
+
+console.log('about', n)
 console.log('about2')

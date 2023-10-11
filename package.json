@@ -22,6 +22,7 @@
     "sass": "^1.69.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
     "twig-loader": "^0.5.5",
     "typescript": "^5.2.2",

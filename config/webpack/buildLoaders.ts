@@ -5,6 +5,12 @@ import {WebpackBuildOptions} from "./types/config";
 const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["module"]["rules"] => {
     const {isDev} = options;
     
+    const tsLoader = {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+    };
+    
     const twigLoader = {
         test: /\.twig$/,
         use: {
@@ -21,9 +27,16 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
         ],
     };
     
+    const fontLoader = {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+    };
+    
     return [
+        tsLoader,
         twigLoader,
-        styleLoader
+        styleLoader,
+        fontLoader,
     ];
 };
 
