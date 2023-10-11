@@ -11,6 +11,12 @@
             <script defer="defer" src="{{ js }}"></script>
         {% endif %}
     {% endfor %}
+
+    {% for css in htmlWebpackPlugin.files.css %}
+        {% if css|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
+            <link href="{{ css }}" rel="stylesheet">
+        {% endif %}
+    {% endfor %}
 </head>
 <body>
     {% block content %}{% endblock %}

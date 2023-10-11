@@ -1,3 +1,4 @@
-import '../styles/main.scss';
+import '../styles/about.scss';
 
-console.log(1);
+console.log('about')
+console.log('about2')

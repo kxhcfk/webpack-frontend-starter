@@ -1,6 +1,7 @@
 import {WebpackBuildOptions} from "./types/config";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
 import fs from "fs";
 
@@ -22,6 +23,9 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
     
     const plugins: webpack.Configuration["plugins"] = [
         ...html,
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        })
     ];
     
     return plugins;

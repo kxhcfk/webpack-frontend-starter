@@ -1,7 +1,10 @@
-import {WebpackBuildOptions} from "./types/config";
 import webpack from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import {WebpackBuildOptions} from "./types/config";
 
 const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["module"]["rules"] => {
+    const {isDev} = options;
+    
     const twigLoader = {
         test: /\.twig$/,
         use: {
@@ -12,7 +15,7 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
     const styleLoader = {
         test: /\.s[ac]ss$/i,
         use: [
-            "style-loader",
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
             "css-loader",
             "sass-loader",
         ],
