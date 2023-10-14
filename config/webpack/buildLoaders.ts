@@ -1,6 +1,6 @@
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import SvgChunkWebpackPlugin from 'svg-chunk-webpack-plugin';
+// import SvgChunkWebpackPlugin from 'svg-chunk-webpack-plugin';
 import {WebpackBuildOptions} from "./types/config";
 
 const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["module"]["rules"] => {
@@ -33,21 +33,21 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
         type: "asset/resource",
     };
     
-    const svgLoader = {
-        test: /\.svg$/,
-        use: [
-            {
-                loader: (SvgChunkWebpackPlugin as any).loader,
-            },
-        ],
-    };
+    // const svgLoader = {
+    //     test: /\.svg$/,
+    //     use: [
+    //         {
+    //             loader: (SvgChunkWebpackPlugin as any).loader,
+    //         },
+    //     ],
+    // };
     
     return [
         tsLoader,
         twigLoader,
         styleLoader,
         fontLoader,
-        svgLoader
+        // svgLoader
     ];
 };
 
