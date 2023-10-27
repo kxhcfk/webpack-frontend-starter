@@ -13,6 +13,7 @@ const config = (env: WebpackBuildEnv): webpack.Configuration => {
         src: path.resolve(__dirname, "src"),
         output: path.resolve(__dirname, "build"),
         app: path.resolve(__dirname, "src", "app"),
+        svgo: path.resolve(__dirname, "config", "svgo", "svgo.config.ts"),
     };
     
     return buildWebpackConfig({
