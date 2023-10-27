@@ -20,5 +20,11 @@
 </head>
 <body>
     {% block content %}{% endblock %}
+
+    {% for sprite in htmlWebpackPlugin.files.svgSprites %}
+        {% if sprite[0]|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
+            {{ sprite[1] }}
+        {% endif %}
+    {% endfor %}
 </body>
 </html>

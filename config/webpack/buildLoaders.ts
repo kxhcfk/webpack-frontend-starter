@@ -1,13 +1,13 @@
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-// import SvgChunkWebpackPlugin from 'svg-chunk-webpack-plugin';
 import {WebpackBuildOptions} from "./types/config";
+import SvgChunkWebpackPlugin from "svg-chunk-webpack-plugin";
 
 const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["module"]["rules"] => {
-    const {isDev} = options;
+    const {isDev, paths} = options;
     
     const tsLoader = {
-        test: /\.ts?$/,
+        test: /\.ts$/,
         use: "ts-loader",
         exclude: /node_modules/,
     };
@@ -33,21 +33,24 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
         type: "asset/resource",
     };
     
-    // const svgLoader = {
-    //     test: /\.svg$/,
-    //     use: [
-    //         {
-    //             loader: (SvgChunkWebpackPlugin as any).loader,
-    //         },
-    //     ],
-    // };
+    const svgLoader = {
+        test: /\.svg$/,
+        use: [
+            {
+                loader: (SvgChunkWebpackPlugin as any).loader,
+                options: {
+                    configFile: paths.svgo,
+                }
+            },
+        ],
+    };
     
     return [
         tsLoader,
         twigLoader,
+        svgLoader,
         styleLoader,
         fontLoader,
-        // svgLoader
     ];
 };
 
