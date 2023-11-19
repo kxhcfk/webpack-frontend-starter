@@ -7,7 +7,7 @@ import path from "path";
 import fs from "fs";
 
 const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plugins"] => {
-    const {paths, isDev} = options;
+    const {paths, isSvg, isDev} = options;
     
     const html = fs.readdirSync(paths.app).map(dir => (
         new HtmlWebpackPlugin({
@@ -35,12 +35,11 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
                 };
             },
             filename: `${dir}.html`,
-            minify: !isDev,
+            minify: false,
         })
     ));
     
     const plugins: webpack.Configuration["plugins"] = [
-        ...html,
         new MiniCssExtractPlugin({
             filename: "[name].css",
         }),
@@ -55,6 +54,10 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
             }
         }),
     ];
+    
+    if (!isSvg) {
+        plugins.push(...html);
+    }
     
     return plugins;
 };

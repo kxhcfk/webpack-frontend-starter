@@ -10,6 +10,7 @@ export interface WebpackBuildPaths {
 export interface WebpackBuildEnv {
     readonly mode: WebpackBuildMode,
     readonly port: number;
+    readonly svg: boolean;
 }
 
 export interface WebpackBuildOptions {
@@ -17,4 +18,5 @@ export interface WebpackBuildOptions {
     readonly paths: WebpackBuildPaths;
     readonly isDev: boolean;
     readonly port: number;
+    readonly isSvg: boolean;
 }

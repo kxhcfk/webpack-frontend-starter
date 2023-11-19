@@ -6,6 +6,7 @@ import {buildWebpackConfig} from "./config/webpack/buildWebpackConfig";
 
 const config = (env: WebpackBuildEnv): webpack.Configuration => {
     const mode = env.mode;
+    const isSvg = env.svg;
     const port = env.port || 3000;
     const isDev = mode === "development";
     
@@ -18,6 +19,7 @@ const config = (env: WebpackBuildEnv): webpack.Configuration => {
     
     return buildWebpackConfig({
         isDev,
+        isSvg,
         mode,
         port,
         paths,

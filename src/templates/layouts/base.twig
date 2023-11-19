@@ -6,25 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
 
-    {% for js in htmlWebpackPlugin.files.js %}
-        {% if js|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
-            <script defer="defer" src="{{ js }}"></script>
-        {% endif %}
-    {% endfor %}
-
-    {% for css in htmlWebpackPlugin.files.css %}
-        {% if css|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
-            <link href="{{ css }}" rel="stylesheet">
-        {% endif %}
-    {% endfor %}
+    <script defer="defer" src="{{ htmlWebpackPlugin.files.js }}.js"></script>
+    <link href="{{ htmlWebpackPlugin.files.css }}.css" rel="stylesheet">
 </head>
 <body>
     {% block content %}{% endblock %}
 
-    {% for sprite in htmlWebpackPlugin.files.svgSprites %}
-        {% if sprite[0]|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
-            {{ sprite[1] }}
-        {% endif %}
-    {% endfor %}
+    <img src="../../assets/images/image.jpg" alt="">
+
+    {% include "output::" ~ htmlWebpackPlugin.files.svgSprite %}
 </body>
 </html>

@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve --env mode=development",
-    "build": "webpack --env mode=production"
+    "build": "webpack --env mode=production --env svg && webpack --env mode=production"
   },
   "keywords": [],
   "author": "kxhcfk",
@@ -25,10 +25,12 @@
     "svg-chunk-webpack-plugin": "^4.0.2",
     "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
+    "twig-html-loader": "^0.1.9",
     "twig-loader": "^0.5.5",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-manifest-plugin": "^5.0.0"
   }
 }
