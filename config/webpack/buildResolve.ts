@@ -7,6 +7,11 @@ const buildResolve = (options: WebpackBuildOptions): webpack.Configuration["reso
     
     return {
         extensions: [".ts", ".js"],
+        modules: [
+            paths.src,
+            paths.public,
+            path.resolve(paths.src, '..', 'node_modules')
+        ],
         alias: {
             "@icons": path.resolve(paths.src, "assets", "svg"),
         },

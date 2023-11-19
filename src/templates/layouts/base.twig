@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
 
+    <script defer="defer" src="base.js"></script>
+    <link href="base.css" rel="stylesheet">
+
     <script defer="defer" src="{{ htmlWebpackPlugin.files.js }}.js"></script>
     <link href="{{ htmlWebpackPlugin.files.css }}.css" rel="stylesheet">
 </head>

@@ -68,6 +68,9 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
     const fontLoader = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+        generator: {
+            filename: 'assets/fonts/[base]'
+        }
     };
     
     const svgLoader = {
@@ -85,6 +88,9 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
     const assetsLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+        generator: {
+            filename: 'assets/images/[base]'
+        }
     };
     
     const loaders: webpack.Configuration["module"]["rules"] = [

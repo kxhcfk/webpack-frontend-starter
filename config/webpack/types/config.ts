@@ -5,6 +5,7 @@ export interface WebpackBuildPaths {
     readonly src: string;
     readonly output: string;
     readonly svgo: string;
+    readonly public: string;
 }
 
 export interface WebpackBuildEnv {

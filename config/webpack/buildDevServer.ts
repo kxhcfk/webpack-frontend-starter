@@ -7,7 +7,6 @@ const buildDevServer = (options: WebpackBuildOptions): DevServerConfiguration =>
     
     return {
         port,
-        hot: 'only',
         open: true,
         watchFiles: ["src/**/*.twig"]
     }

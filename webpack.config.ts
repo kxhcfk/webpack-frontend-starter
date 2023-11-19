@@ -15,6 +15,7 @@ const config = (env: WebpackBuildEnv): webpack.Configuration => {
         output: path.resolve(__dirname, "build"),
         app: path.resolve(__dirname, "src", "app"),
         svgo: path.resolve(__dirname, "config", "svgo", "svgo.config.ts"),
+        public: path.resolve(__dirname, "public"),
     };
     
     return buildWebpackConfig({

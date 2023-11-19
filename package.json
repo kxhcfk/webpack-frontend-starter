@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "dev": "webpack serve --env mode=development",
+    "dev": "webpack --env mode=production --env svg && webpack serve --env mode=development",
     "build": "webpack --env mode=production --env svg && webpack --env mode=production"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "@types/node": "^20.8.4",
     "@types/webpack": "^5.28.3",
     "css-loader": "^6.8.1",
+    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "sass": "^1.69.2",
