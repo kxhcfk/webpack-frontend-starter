@@ -3,10 +3,9 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { WebpackBuildOptions } from "./types/config";
 import SvgChunkWebpackPlugin from "svg-chunk-webpack-plugin";
 import path from "path";
-import { LoaderContext } from "mini-css-extract-plugin/types/utils";
 
 const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["module"]["rules"] => {
-    const {isDev, isSvg, paths} = options;
+    const {isDev, paths} = options;
     
     const tsLoader = {
         test: /\.ts$/,
@@ -14,44 +13,21 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
         exclude: /node_modules/,
     };
     
-    const twigLoader:  webpack.RuleSetRule = {
+    const twigLoader: webpack.RuleSetRule = {
         test: /\.twig$/,
         use: [
+            // {
+            //     loader: "twig-loader",
+            //     options: {
+            //         twigOptions: {
+            //             namespaces: {
+            //                 "ui": path.resolve(paths.src, "shared", "ui")
+            //             }
+            //         }
+            //     }
+            // },
             {
-                loader: "html-loader",
-                options: {
-                    sources: {
-                        list: [
-                            {
-                                tag: "img",
-                                attribute: "src",
-                                type: "src",
-                            },
-                        ],
-                    },
-                    minimize: false,
-                },
-            },
-            {
-                loader: "twig-html-loader",
-                options: {
-                    namespaces: {
-                        "output": path.resolve(paths.output),
-                    },
-                    data: (context: LoaderContext, w: any, q: any) => {
-                        const entry = path.dirname(context.resourcePath).split(path.sep).at(-1);
-
-                        return {
-                            htmlWebpackPlugin: {
-                                files: {
-                                    js: entry,
-                                    css: entry,
-                                    svgSprite: `sprites${path.sep}${entry}.svg`,
-                                },
-                            },
-                        };
-                    },
-                },
+                loader: "twigjs-loader",
             },
         ],
     };
@@ -68,13 +44,10 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
     const fontLoader = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
-        generator: {
-            filename: 'assets/fonts/[base]'
-        }
     };
     
     const svgLoader = {
-        test: /\.svg$/,
+        test: /\.svg$/i,
         use: [
             {
                 loader: (SvgChunkWebpackPlugin as any).loader,
@@ -88,9 +61,6 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
     const assetsLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-        generator: {
-            filename: 'assets/images/[base]'
-        }
     };
     
     const loaders: webpack.Configuration["module"]["rules"] = [
@@ -98,12 +68,9 @@ const buildLoaders = (options: WebpackBuildOptions): webpack.Configuration["modu
         fontLoader,
         assetsLoader,
         svgLoader,
+        twigLoader,
         tsLoader,
     ];
-    
-    if (!isSvg) {
-        loaders.push(twigLoader);
-    }
     
     return loaders;
 };

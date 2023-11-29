@@ -1,0 +1,55 @@
+.block {
+    display: block;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.hide {
+    display: none;
+}
+
+.md-block {
+    @include md {
+        display: block !important;
+    }
+}
+
+.md-flex {
+    @include md {
+        display: block !important;
+    }
+}
+
+.md-hide {
+    @include md {
+        display: none !important;
+    }
+}
+
+.sm-block {
+    @include sm {
+        display: block !important;
+    }
+}
+
+.sm-flex {
+    @include sm {
+        display: block !important;
+    }
+}
+
+.sm-hide {
+    @include sm {
+        display: none !important;
+    }
+}

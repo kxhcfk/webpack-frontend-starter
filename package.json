@@ -1,37 +1,30 @@
 {
-  "name": "webpack-frontend-starter",
+  "name": "krep-comp",
   "version": "1.0.0",
   "description": "",
-  "repository": {
-    "url": "https://github.com/kxhcfk/webpack-frontend-starter"
-  },
   "private": true,
   "scripts": {
-    "dev": "webpack --env mode=production --env svg && webpack serve --env mode=development",
-    "build": "webpack --env mode=production --env svg && webpack --env mode=production"
+    "dev": "webpack serve --env mode=development",
+    "build": "webpack --env mode=production"
   },
   "keywords": [],
   "author": "kxhcfk",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.8.4",
-    "@types/webpack": "^5.28.3",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
-    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
-    "sass": "^1.69.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
     "svg-chunk-webpack-plugin": "^4.0.2",
     "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
-    "twig-html-loader": "^0.1.9",
-    "twig-loader": "^0.5.5",
+    "twigjs-loader": "^1.0.3",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-manifest-plugin": "^5.0.0"
+    "webpack-dev-server": "^4.15.1"
   }
 }

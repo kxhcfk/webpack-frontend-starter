@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{% block lang %}ru{% endblock %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% for js in htmlWebpackPlugin.files.js %}
+        {% if js|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
+            <script defer="defer" src="{{ js }}"></script>
+        {% endif %}
+    {% endfor %}
+
+    {% for css in htmlWebpackPlugin.files.css %}
+        {% if css|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
+            <link href="{{ css }}" rel="stylesheet">
+        {% endif %}
+    {% endfor %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    {% for sprite in htmlWebpackPlugin.files.svgSprites %}
+        {% if sprite[0]|split('.')[0] == htmlWebpackPlugin.options.filename|split('.')[0] %}
+            {{ sprite[1] }}
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

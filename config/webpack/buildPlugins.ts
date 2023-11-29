@@ -5,14 +5,15 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import SvgChunkWebpackPlugin from "svg-chunk-webpack-plugin";
 import path from "path";
 import fs from "fs";
+import CopyPlugin from "copy-webpack-plugin";
 
 const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plugins"] => {
-    const {paths, isSvg, isDev} = options;
+    const {paths, isDev} = options;
     
-    const html = fs.readdirSync(paths.app).map(dir => (
+    const html = fs.readdirSync(paths.pages).map(dir => (
         new HtmlWebpackPlugin({
             inject: false,
-            template: path.resolve(paths.app, dir, "template.twig"),
+            template: path.resolve(paths.pages, dir, "template.twig"),
             templateParameters: (compilation, assets, assetTags, options) => {
                 const compilationAssets = compilation.getAssets();
                 
@@ -40,6 +41,7 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
     ));
     
     const plugins: webpack.Configuration["plugins"] = [
+        ...html,
         new MiniCssExtractPlugin({
             filename: "[name].css",
         }),
@@ -53,11 +55,16 @@ const buildPlugins = (options: WebpackBuildOptions): webpack.Configuration["plug
                 }
             }
         }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(paths.public),
+                    to: path.resolve(paths.output, 'assets')
+                }
+            ],
+        }),
+        new webpack.ProgressPlugin()
     ];
-    
-    if (!isSvg) {
-        plugins.push(...html);
-    }
     
     return plugins;
 };

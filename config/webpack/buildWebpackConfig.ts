@@ -7,7 +7,7 @@ import {buildDevServer} from "./buildDevServer";
 import {buildResolve} from "./buildResolve";
 
 const buildWebpackConfig = (options: WebpackBuildOptions): webpack.Configuration => {
-    const {mode, isDev, isSvg, paths} = options;
+    const {mode, isDev, paths} = options;
     
     return {
         mode: mode,
@@ -17,13 +17,13 @@ const buildWebpackConfig = (options: WebpackBuildOptions): webpack.Configuration
             rules: buildLoaders(options),
         },
         devtool: isDev ? 'inline-source-map' : undefined,
-        devServer: isDev && !isSvg ? buildDevServer(options) : undefined,
+        devServer: isDev ? buildDevServer(options) : undefined,
         resolve: buildResolve(options),
         output: {
             path: paths.output,
             filename: '[name].js',
-            clean: !isSvg,
-        },
+            clean: true,
+        }
     };
 };
 

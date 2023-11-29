@@ -6,10 +6,10 @@ import path from "path";
 const buildEntry = (options: WebpackBuildOptions): webpack.Configuration["entry"] => {
     const {paths} = options;
     
-    const entry = fs.readdirSync(paths.app).reduce((acc, dir) => {
+    const entry = fs.readdirSync(paths.pages).reduce((acc, dir) => {
         acc.push([
             dir,
-            path.resolve(paths.app, dir, 'script.ts')
+            path.resolve(paths.pages, dir, 'script.ts')
         ]);
         
         return acc;

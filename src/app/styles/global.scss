@@ -1,0 +1,38 @@
+html {
+    font-size: 62.5%;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-xl);
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    padding-block: 3.2rem 8rem;
+    flex-grow: 1;
+}
+
+.section {
+    margin-bottom: 6.4rem;
+}
+
+.container {
+    max-width: var(--max-container-width);
+    padding-inline: 3.2rem;
+    margin-inline: auto;
+    
+    @include sm {
+        padding-inline: 1.3rem;
+    }
+}
